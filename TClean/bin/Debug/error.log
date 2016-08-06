@@ -1,0 +1,7 @@
+System.IO.DirectoryNotFoundException: Nem található a következő elérési út egy része.: „C:\Users\kerek\Downloadss”.
+   a következő helyen: System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   a következő helyen: System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   a következő helyen: System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   a következő helyen: System.IO.Directory.GetFiles(String path)
+   a következő helyen: TClean.TClean.Analyze_Click(Object sender, EventArgs e) hely: E:\Projects\TClean\TClean\TClean.cs, sor: 27
+

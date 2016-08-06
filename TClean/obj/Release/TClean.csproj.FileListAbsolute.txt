@@ -1,0 +1,8 @@
+E:\Projects\TClean\TClean\bin\Release\TClean.exe.config
+E:\Projects\TClean\TClean\bin\Release\TClean.exe
+E:\Projects\TClean\TClean\bin\Release\TClean.pdb
+E:\Projects\TClean\TClean\obj\Release\TClean.TClean.resources
+E:\Projects\TClean\TClean\obj\Release\TClean.Properties.Resources.resources
+E:\Projects\TClean\TClean\obj\Release\TClean.csproj.GenerateResource.Cache
+E:\Projects\TClean\TClean\obj\Release\TClean.exe
+E:\Projects\TClean\TClean\obj\Release\TClean.pdb

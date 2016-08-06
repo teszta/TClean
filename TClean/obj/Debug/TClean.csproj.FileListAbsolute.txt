@@ -1,0 +1,9 @@
+E:\Projects\TClean\TClean\bin\Debug\TClean.exe.config
+E:\Projects\TClean\TClean\bin\Debug\TClean.exe
+E:\Projects\TClean\TClean\bin\Debug\TClean.pdb
+E:\Projects\TClean\TClean\obj\Debug\TClean.csprojResolveAssemblyReference.cache
+E:\Projects\TClean\TClean\obj\Debug\TClean.TClean.resources
+E:\Projects\TClean\TClean\obj\Debug\TClean.Properties.Resources.resources
+E:\Projects\TClean\TClean\obj\Debug\TClean.csproj.GenerateResource.Cache
+E:\Projects\TClean\TClean\obj\Debug\TClean.exe
+E:\Projects\TClean\TClean\obj\Debug\TClean.pdb
