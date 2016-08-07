@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace TClean
 {
@@ -29,9 +30,6 @@ namespace TClean
             catch (Exception ex)
             {
                 MessageBox.Show("Target must be a valid path!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                StreamWriter sw = new StreamWriter("error.log");
-                sw.Write(ex + "\n\n");
-                sw.Close();
                 TargetBox.Focus();
                 return;
             }
@@ -50,9 +48,13 @@ namespace TClean
                     string szoveg = s.Substring(s.LastIndexOf('\\') + 1);
                     Lista.Items.Add((szoveg));
                     count++;
+                    Thread.Sleep(10);
+                    Lista.SelectedIndex = count - 1;
                 }
                 Lista.Items.Add("..");
                 Lista.Items.Add("Analyze completed." + count + " items were ready to clean.");
+                Lista.Items.Add("");
+                Lista.SelectedIndex = count + 2;
             }
         }
 
@@ -65,9 +67,6 @@ namespace TClean
             catch (Exception ex)
             {
                 MessageBox.Show("Target must be a valid path!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                StreamWriter sw = new StreamWriter("error.log");
-                sw.Write(ex+"\n\n");
-                sw.Close();
                 TargetBox.Focus();
                 return;
             }
@@ -79,15 +78,13 @@ namespace TClean
             }
             else
             {
-                DialogResult result = MessageBox.Show("Are you sure?\nIt will remove " + fajlok.Count() + " files.", "Clean", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                DialogResult result = MessageBox.Show("Are you sure?\n" + fajlok.Count() + " file(s) will be removed.", "Clean", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.No || result == DialogResult.Cancel)
                 {
                     Lista.Items.Add("Aborted..");
                 }
                 else
                 {
-                    Lista.Items.Add("Deleting");
-                    Lista.Items.Add("..");
                     int count = 0;
                     for (int i = 0; i < fajlok.Length; i++)
                     {
@@ -96,11 +93,26 @@ namespace TClean
                         Lista.Items.Add((szoveg));
                         File.Delete(s);
                         count++;
+                        Thread.Sleep(10);
+                        Lista.SelectedIndex = count - 1;
                     }
                     Lista.Items.Add("..");
                     Lista.Items.Add("Cleaning completed." + count + " items were removed.");
+                    Lista.Items.Add("");
+                    Lista.SelectedIndex = count + 2;
                 }
             }
+        }
+
+        private void Change_Click(object sender, EventArgs e)
+        {
+            Selector.ShowDialog();
+            if(Selector.SelectedPath != "")
+            {
+                TargetBox.Text = Selector.SelectedPath;
+            }
+            
+
         }
     }
 }

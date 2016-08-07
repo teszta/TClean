@@ -35,6 +35,8 @@
             this.Clean = new System.Windows.Forms.Button();
             this.TargetBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.Change = new System.Windows.Forms.Button();
+            this.Selector = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // Lista
@@ -92,11 +94,27 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Status:";
             // 
+            // Change
+            // 
+            this.Change.Location = new System.Drawing.Point(195, 57);
+            this.Change.Name = "Change";
+            this.Change.Size = new System.Drawing.Size(75, 23);
+            this.Change.TabIndex = 6;
+            this.Change.Text = "Change";
+            this.Change.UseVisualStyleBackColor = true;
+            this.Change.Click += new System.EventHandler(this.Change_Click);
+            // 
+            // Selector
+            // 
+            this.Selector.Description = "Select the target folder where .torrent files found.";
+            this.Selector.ShowNewFolderButton = false;
+            // 
             // TClean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 273);
+            this.Controls.Add(this.Change);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TargetBox);
             this.Controls.Add(this.Clean);
@@ -122,6 +140,8 @@
         private System.Windows.Forms.Button Clean;
         private System.Windows.Forms.TextBox TargetBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Change;
+        private System.Windows.Forms.FolderBrowserDialog Selector;
     }
 }
 

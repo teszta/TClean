@@ -1,4 +1,4 @@
-System.IO.DirectoryNotFoundException: Nem található a következő elérési út egy része.: „C:\Users\kerek\Downloadss”.
+System.IO.DirectoryNotFoundException: Nem található a következő elérési út egy része.: „C:\Users\kerek\.ssha”.
    a következő helyen: System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
    a következő helyen: System.IO.FileSystemEnumerableIterator`1.CommonInit()
    a következő helyen: System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)

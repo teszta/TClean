@@ -6,3 +6,4 @@ E:\Projects\TClean\TClean\obj\Release\TClean.Properties.Resources.resources
 E:\Projects\TClean\TClean\obj\Release\TClean.csproj.GenerateResource.Cache
 E:\Projects\TClean\TClean\obj\Release\TClean.exe
 E:\Projects\TClean\TClean\obj\Release\TClean.pdb
+E:\Projects\TClean\TClean\obj\Release\TClean.csprojResolveAssemblyReference.cache
