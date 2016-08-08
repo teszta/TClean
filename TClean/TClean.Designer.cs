@@ -37,6 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Change = new System.Windows.Forms.Button();
             this.Selector = new System.Windows.Forms.FolderBrowserDialog();
+            this.TorrentCB = new System.Windows.Forms.CheckBox();
+            this.OwnextCB = new System.Windows.Forms.CheckBox();
+            this.OwnextTB = new System.Windows.Forms.TextBox();
+            this.ExtensionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Lista
@@ -96,9 +100,9 @@
             // 
             // Change
             // 
-            this.Change.Location = new System.Drawing.Point(195, 57);
+            this.Change.Location = new System.Drawing.Point(431, 24);
             this.Change.Name = "Change";
-            this.Change.Size = new System.Drawing.Size(75, 23);
+            this.Change.Size = new System.Drawing.Size(75, 33);
             this.Change.TabIndex = 6;
             this.Change.Text = "Change";
             this.Change.UseVisualStyleBackColor = true;
@@ -109,11 +113,54 @@
             this.Selector.Description = "Select the target folder where .torrent files found.";
             this.Selector.ShowNewFolderButton = false;
             // 
+            // TorrentCB
+            // 
+            this.TorrentCB.AutoSize = true;
+            this.TorrentCB.Checked = true;
+            this.TorrentCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.TorrentCB.Location = new System.Drawing.Point(56, 67);
+            this.TorrentCB.Name = "TorrentCB";
+            this.TorrentCB.Size = new System.Drawing.Size(59, 17);
+            this.TorrentCB.TabIndex = 8;
+            this.TorrentCB.Text = ".torrent";
+            this.TorrentCB.UseVisualStyleBackColor = true;
+            // 
+            // OwnextCB
+            // 
+            this.OwnextCB.AutoSize = true;
+            this.OwnextCB.Location = new System.Drawing.Point(121, 67);
+            this.OwnextCB.Name = "OwnextCB";
+            this.OwnextCB.Size = new System.Drawing.Size(15, 14);
+            this.OwnextCB.TabIndex = 9;
+            this.OwnextCB.UseVisualStyleBackColor = true;
+            // 
+            // OwnextTB
+            // 
+            this.OwnextTB.Location = new System.Drawing.Point(142, 65);
+            this.OwnextTB.MaxLength = 20;
+            this.OwnextTB.Name = "OwnextTB";
+            this.OwnextTB.Size = new System.Drawing.Size(100, 20);
+            this.OwnextTB.TabIndex = 10;
+            this.OwnextTB.Text = ".exe";
+            // 
+            // ExtensionLabel
+            // 
+            this.ExtensionLabel.AutoSize = true;
+            this.ExtensionLabel.Location = new System.Drawing.Point(12, 71);
+            this.ExtensionLabel.Name = "ExtensionLabel";
+            this.ExtensionLabel.Size = new System.Drawing.Size(25, 13);
+            this.ExtensionLabel.TabIndex = 11;
+            this.ExtensionLabel.Text = "Ext:";
+            // 
             // TClean
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 273);
+            this.Controls.Add(this.ExtensionLabel);
+            this.Controls.Add(this.OwnextTB);
+            this.Controls.Add(this.OwnextCB);
+            this.Controls.Add(this.TorrentCB);
             this.Controls.Add(this.Change);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TargetBox);
@@ -142,6 +189,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Change;
         private System.Windows.Forms.FolderBrowserDialog Selector;
+        private System.Windows.Forms.CheckBox TorrentCB;
+        private System.Windows.Forms.CheckBox OwnextCB;
+        private System.Windows.Forms.TextBox OwnextTB;
+        private System.Windows.Forms.Label ExtensionLabel;
     }
 }
 

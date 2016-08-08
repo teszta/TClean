@@ -21,7 +21,7 @@ namespace TClean
             TargetBox.Text = targetdef;
         }
 
-        private void Analyze_Click(object sender, EventArgs e)
+        public void Analyze_Click(object sender, EventArgs e)
         {
             try
             {
@@ -34,17 +34,86 @@ namespace TClean
                 return;
             }
             Lista.Items.Clear();
-            object[] fajlok = Directory.GetFiles(TargetBox.Text, "*.torrent");
-            int count = 0;
-            if (fajlok.Count() == 0)
+            int osszeg = 0;
+            int to = 0;
+            int oo = 0;
+            string[] Tfajlok = new string[Directory.GetFiles(TargetBox.Text, "*.torrent").Length];
+            string[] Ofajlok = new string[Directory.GetFiles(TargetBox.Text, "*" + OwnextTB.Text).Length];
+            if (TorrentCB.Checked)
             {
-                Lista.Items.Add("There are no torrent files!");
+                Tfajlok = Directory.GetFiles(TargetBox.Text, "*.torrent");
+                osszeg += Tfajlok.Count();
+                to = Tfajlok.Count();
+            }
+            if (OwnextCB.Checked)
+            {
+                if (OwnextTB.Text == "")
+                {
+                    MessageBox.Show("Type an extension first. (eg.: .mp3 , .mp4 , .mkv)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    Lista.Items.Add("Extension missing.. Aborted.");
+                    return;
+                }
+                Ofajlok = Directory.GetFiles(TargetBox.Text, "*" + OwnextTB.Text);
+                osszeg += Ofajlok.Count();
+                oo = Ofajlok.Count();
+            }
+            if (!TorrentCB.Checked && !OwnextCB.Checked)
+            {
+                MessageBox.Show("You must choose at least one extension!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                Lista.Items.Add("Extension missing.. Aborted.");
+                return;
+            }
+            int count = 0;
+            if (osszeg == 0)
+            {
+                Lista.Items.Add("No matchable file found!");
             }
             else
             {
-                for (int i = 0; i < fajlok.Length; i++)
+                string[] Fajlist = new string[osszeg];
+                int cv = 0;
+                int cvo = 0;
+                for (int i = 0; i < Fajlist.Length; i++)
                 {
-                    string s = (string)fajlok[i];
+
+                    if (OwnextCB.Checked && Ofajlok.Count() != 0 && cvo != -1)
+                    {
+                        Fajlist[i] = Ofajlok[cvo];
+                        if (cvo != Ofajlok.Count() - 1)
+                        {
+                            cvo++;
+                        }
+                        else
+                        {
+                            cvo = -1;
+                        }
+                    }
+
+                }
+                if (TorrentCB.Checked)
+                {
+                    for (int i = osszeg - to; i < Fajlist.Length; i++)
+                    {
+                        if (TorrentCB.Checked && Tfajlok.Count() != 0 && cv != -1)
+                        {
+                            Fajlist[i] = Tfajlok[cv];
+                            if (cv != Tfajlok.Count() - 1)
+                            {
+                                cv++;
+                            }
+                            else
+                            {
+                                cv = -1;
+                            }
+
+                        }
+                    }
+
+                }
+
+                for (int i = 0; i < Fajlist.Length; i++)
+                {
+                    string s = Fajlist[i];
                     string szoveg = s.Substring(s.LastIndexOf('\\') + 1);
                     Lista.Items.Add((szoveg));
                     count++;
@@ -71,24 +140,94 @@ namespace TClean
                 return;
             }
             Lista.Items.Clear();
-            object[] fajlok = Directory.GetFiles(TargetBox.Text, "*.torrent");
-            if (fajlok.Count() == 0)
+            int osszeg = 0;
+            int to = 0;
+            int oo = 0;
+            string[] Tfajlok = new string[Directory.GetFiles(TargetBox.Text, "*.torrent").Length];
+            string[] Ofajlok = new string[Directory.GetFiles(TargetBox.Text, "*" + OwnextTB.Text).Length];
+            if (TorrentCB.Checked)
             {
-                Lista.Items.Add("There are no torrent files!");
+                Tfajlok = Directory.GetFiles(TargetBox.Text, "*.torrent");
+                osszeg += Tfajlok.Count();
+                to = Tfajlok.Count();
+            }
+            if (OwnextCB.Checked)
+            {
+                if (OwnextTB.Text == "")
+                {
+                    MessageBox.Show("Type an extension first. (eg.: .mp3 , .mp4 , .mkv)", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    Lista.Items.Add("Extension missing.. Aborted.");
+                    return;
+                }
+                Ofajlok = Directory.GetFiles(TargetBox.Text, "*" + OwnextTB.Text);
+                osszeg += Ofajlok.Count();
+                oo = Ofajlok.Count();
+            }
+            if (!TorrentCB.Checked && !OwnextCB.Checked)
+            {
+                MessageBox.Show("You must choose at least one extension!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                Lista.Items.Add("Extension missing.. Aborted.");
+                return;
+            }
+            int count = 0;
+            if (osszeg == 0)
+            {
+                Lista.Items.Add("No matchable file found!");
             }
             else
             {
-                DialogResult result = MessageBox.Show("Are you sure?\n" + fajlok.Count() + " file(s) will be removed.", "Clean", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                DialogResult result = MessageBox.Show("Are you sure?\n" + osszeg + " file(s) will be removed.", "Clean", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.No || result == DialogResult.Cancel)
                 {
                     Lista.Items.Add("Aborted..");
                 }
                 else
                 {
-                    int count = 0;
-                    for (int i = 0; i < fajlok.Length; i++)
+
+                    string[] Fajlist = new string[osszeg];
+                    int cv = 0;
+                    int cvo = 0;
+                    for (int i = 0; i < Fajlist.Length; i++)
                     {
-                        string s = (string)fajlok[i];
+
+                        if (OwnextCB.Checked && Ofajlok.Count() != 0 && cvo != -1)
+                        {
+                            Fajlist[i] = Ofajlok[cvo];
+                            if (cvo != Ofajlok.Count() - 1)
+                            {
+                                cvo++;
+                            }
+                            else
+                            {
+                                cvo = -1;
+                            }
+                        }
+
+                    }
+                    if (TorrentCB.Checked)
+                    {
+                        for (int i = osszeg - to; i < Fajlist.Length; i++)
+                        {
+                            if (TorrentCB.Checked && Tfajlok.Count() != 0 && cv != -1)
+                            {
+                                Fajlist[i] = Tfajlok[cv];
+                                if (cv != Tfajlok.Count() - 1)
+                                {
+                                    cv++;
+                                }
+                                else
+                                {
+                                    cv = -1;
+                                }
+
+                            }
+                        }
+
+                    }
+
+                    for (int i = 0; i < Fajlist.Length; i++)
+                    {
+                        string s = Fajlist[i];
                         string szoveg = s.Substring(s.LastIndexOf('\\') + 1);
                         Lista.Items.Add((szoveg));
                         File.Delete(s);
@@ -107,11 +246,11 @@ namespace TClean
         private void Change_Click(object sender, EventArgs e)
         {
             Selector.ShowDialog();
-            if(Selector.SelectedPath != "")
+            if (Selector.SelectedPath != "")
             {
                 TargetBox.Text = Selector.SelectedPath;
             }
-            
+
 
         }
     }
