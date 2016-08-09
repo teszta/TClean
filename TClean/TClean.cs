@@ -21,7 +21,7 @@ namespace TClean
             TargetBox.Text = targetdef;
         }
 
-        public void Analyze_Click(object sender, EventArgs e)
+        private void Analyze_Click(object sender, EventArgs e)
         {
             try
             {
